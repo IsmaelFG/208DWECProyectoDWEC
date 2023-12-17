@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const TAM_COLUMNAS = 10;
+        const TAM_FILAS = 10;
+        var tablero = new Array(TAM_FILAS);
+        //iniciar tablero
+        for (let i = 0; i < TAM_FILAS; i++) {
+            tablero[i] = new Array(TAM_COLUMNAS);
+            for (let j = 0; j < TAM_COLUMNAS; j++) {
+                tablero[i][j] = false;
+            }
+        }
+
+
+
+
+        //Calcular posicion aleatoria
+
+        var pos_columnas = -1;
+        var pos_filas = -1;
+        var posicion = -1;
+
+
+        for (let i = 0; i < 3; i++) {
+            var libre = false;
+            do {
+                posicion = parseInt(Math.random() * (2 - 1 + 1) + 1);
+
+
+                if (posicion == 1) {
+                    pos_filas = parseInt(Math.random() * (9 - 0 + 1) + 0);
+                    pos_columnas = parseInt(Math.random() * (7 - 0 + 1) + 0);
+                    if (pos_filas == 0 && pos_columnas == 0) {
+
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas][pos_columnas + 2] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 2] && !tablero[pos_filas + 1][pos_columnas + 3] && !tablero[pos_filas][pos_columnas + 3]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_filas == 0 && pos_columnas == 7) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas][pos_columnas + 2] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 2]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_filas == 9 && pos_columnas == 0) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas][pos_columnas + 2] && !tablero[pos_filas][pos_columnas + 3] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas - 1][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas + 2] && !tablero[pos_filas - 1][pos_columnas + 3]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_filas == 9 && pos_columnas == 7) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas][pos_columnas + 2] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas - 1][pos_columnas - 1] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas - 1][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas + 2]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                            var libre = true;
+                        }
+
+                    } else if (pos_filas == 0) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas][pos_columnas + 2] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 2] && !tablero[pos_filas + 1][pos_columnas + 3] && !tablero[pos_filas][pos_columnas + 3]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_columnas == 0) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas][pos_columnas + 2] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 2] && !tablero[pos_filas + 1][pos_columnas + 3] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas - 1][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas + 2] && !tablero[pos_filas - 1][pos_columnas + 3] && !tablero[pos_filas][pos_columnas + 3]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_filas == 9) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas][pos_columnas + 2] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas - 1][pos_columnas - 1] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas - 1][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas + 2] && !tablero[pos_filas - 1][pos_columnas + 3] && !tablero[pos_filas][pos_columnas + 3]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                            var libre = true;
+                        }
+
+
+                    } else if (pos_columnas == 7) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas][pos_columnas + 2] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 2] && !tablero[pos_filas + 1][pos_columnas + 3] && !tablero[pos_filas - 1][pos_columnas - 1] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas - 1][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas + 2] && !tablero[pos_filas - 1][pos_columnas + 3] && !tablero[pos_filas][pos_columnas + 3]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                            var libre = true;
+                        }
+
+                    } else {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas][pos_columnas + 2] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 2] && !tablero[pos_filas + 1][pos_columnas + 3] && !tablero[pos_filas - 1][pos_columnas - 1] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas - 1][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas + 2] && !tablero[pos_filas - 1][pos_columnas + 3] && !tablero[pos_filas][pos_columnas + 3]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                            var libre = true;
+                        }
+                    }
+                    if (libre == true) {
+                        for (let i = 1; i < 3; i++) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_columnas += 1;
+                        }
+                    }
+
+
+                } else {
+                    pos_filas = parseInt(Math.random() * (7 - 0 + 1) + 0);
+                    pos_columnas = parseInt(Math.random() * (9 - 0 + 1) + 0);
+                    if (pos_filas == 0 && pos_columnas == 0) {
+
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 2][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 2][pos_columnas + 1] && !tablero[pos_filas + 3][pos_columnas + 1] && !tablero[pos_filas + 3][pos_columnas]) {
+                            tablero[pos_filas][pos_columnas] = true
+                            pos_filas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_filas == 0 && pos_columnas == 9) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 2][pos_columnas] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 2][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_filas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_filas == 7 && pos_columnas == 0) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 2][pos_columnas] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 2][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas + 1]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_filas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_filas == 7 && pos_columnas == 9) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 2][pos_columnas] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas - 1][pos_columnas - 1] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas + 2][pos_columnas - 1]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_filas += 1;
+                            var libre = true;
+                        }
+
+                    } else if (pos_filas == 0) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 2][pos_columnas] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 2][pos_columnas + 1] && !tablero[pos_filas + 3][pos_columnas + 1] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas + 2][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas] && !tablero[pos_filas - 1][pos_columnas]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_filas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_columnas == 0) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 2][pos_columnas] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 2][pos_columnas + 1] && !tablero[pos_filas + 3][pos_columnas + 1] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas + 2][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_filas += 1;
+                            var libre = true;
+                        }
+                    } else if (pos_filas == 7) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 2][pos_columnas] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 2][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas - 1] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 2][pos_columnas - 1] && !tablero[pos_filas - 1][pos_columnas + 1]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_filas += 1;
+                            var libre = true;
+                        }
+
+
+                    } else if (pos_columnas == 9) {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 2][pos_columnas] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 2][pos_columnas + 1] && !tablero[pos_filas + 3][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas - 1] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 2][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas] && !tablero[pos_filas - 1][pos_columnas + 1]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_filas += 1;
+                            var libre = true;
+                        }
+                    } else {
+                        if (!tablero[pos_filas][pos_columnas] && !tablero[pos_filas + 1][pos_columnas] && !tablero[pos_filas + 2][pos_columnas] && !tablero[pos_filas - 1][pos_columnas] && !tablero[pos_filas + 1][pos_columnas - 1] && !tablero[pos_filas][pos_columnas + 1] && !tablero[pos_filas + 1][pos_columnas + 1] && !tablero[pos_filas + 2][pos_columnas + 1] && !tablero[pos_filas + 3][pos_columnas + 1] && !tablero[pos_filas - 1][pos_columnas - 1] && !tablero[pos_filas][pos_columnas - 1] && !tablero[pos_filas + 2][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas - 1] && !tablero[pos_filas + 3][pos_columnas] && !tablero[pos_filas - 1][pos_columnas + 1]) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_filas += 1;
+                            var libre = true;
+                        }
+                    }
+                    if (libre == true) {
+                        for (let i = 1; i < 3; i++) {
+                            tablero[pos_filas][pos_columnas] = true;
+                            pos_filas += 1;
+                        }
+                    }
+                }
+            } while (libre == false);
+        }
+
+
+
+        //Dibujo del tablero
+        document.write("<div id='contenedor'>")
+        for (let i = 0; i < TAM_FILAS; i++) {
+            for (let j = 0; j < TAM_COLUMNAS; j++) {
+
+                if (tablero[i][j]) {//hay barco en esta celda
+                    document.write("<div class='celda ocupada'></div>");
+                }
+                else {
+                    document.write("<div class='celda'></div>");
+                }
+            }
+
+
+
+        }
+        document.write("</div>")
+    </script>
+    <style>
+        #contenedor {
+            width: 100%;
+            text-align: center;
+            width: 500px;
+            margin: auto;
+        }
+
+        .celda {
+            display: inline-block;
+            outline: 1px solid black;
+            width: 50px;
+            height: 50px;
+        }
+
+        .ocupada {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

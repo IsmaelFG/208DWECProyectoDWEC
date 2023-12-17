@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        do {
+            opcion = prompt("Elije el ejercicio, 0 para salir", 1)
+            switch (opcion) {
+                case "1":
+                    var salida = "";
+                    var frase = prompt("Escribe una frase");
+                    var aPalabras = frase.split(" ");
+                    for (const iterator of aPalabras) {
+                        var palabra = iterator.charAt(0).toUpperCase() + iterator.slice(1).toLocaleLowerCase();
+                        salida += palabra + " ";
+                    }
+                    console.log(salida);
+                    break;
+                case "2":
+                    var frase = prompt("Escribe una frase");
+                    var clave = prompt("Escribe una clave");
+                    var unicode = "";
+                    var codigo = "";
+                    var codificado = "";
+                    var contador = 0;
+                    for (let index = 0; index < frase.length; index++) {
+                        codigo = parseInt(clave.charAt(contador));
+                        contador++;
+                        if (contador == clave.length) {
+                            contador = 0;
+                        }
+                        unicode = frase.charAt(index).charCodeAt();
+                        unicode = unicode + codigo;
+                        codificado = codificado + String.fromCharCode(unicode);
+                    }
+                    console.log(codificado);
+
+                    break;
+                case "3":
+                    var nom_ok = true;
+                    var letras = "abcdefghijklmnopqrstuvwxyz";
+                    var letras_mayus = letras.toUpperCase();
+                    var numeros = "0123456789";
+                    var con_num = false;
+                    var con_mayus = false;
+                    var con_minus = false;
+                    var con_simbolo = false;
+
+                    var user = prompt("Escribe un nombre");
+                    do {
+                        if (!nom_ok) {
+                            var user = prompt("Escribe el nombre correctamente");
+                            var nom_ok = true;
+                        }
+                        for (const caracter of user) {
+                            if (!letras.includes(caracter) && !numeros.includes(caracter)) {
+                                nom_ok = false;
+                            }
+                        }
+
+                    } while (nom_ok == false)
+
+                    var pass = prompt("Escribe una contraseña");
+                    do {
+                        if (!con_num || !con_mayus || !con_minus || !con_simbolo) {
+                            var pass = prompt("Escribe la contraseña correctamente");
+                        }
+
+                        for (const caracter of pass) {
+                            if (letras.includes(caracter)) {
+                                con_minus = true;
+                            } else if (letras_mayus.includes(caracter)) {
+                                con_mayus = true;
+                            } else if (numeros.includes(caracter)) {
+                                con_num = true;
+                            } else {
+                                con_simbolo = true;
+                            }
+                        }
+                    } while (!con_num || !con_mayus || !con_minus || !con_simbolo)
+                    console.log("Datos almacenados correctamente");
+
+                    break;
+                case "4":
+                    var palabras = [];
+                    var palabra;
+                    var salir = false;
+
+                    do {
+                        palabra = prompt("Escribe una palabra");
+                        if (palabra != null && palabra != "") {
+                            palabras.push(palabra);
+                        }
+                    } while (palabra != null);
+                    console.log(palabras);
+
+                    do {
+
+                        var menu = prompt("Elije una opción:\n1) Ver primera palabra insertada\n2) Ver última palabra insertada\n3) Ver todas las palabras\n4) Ver la palabra más larga\n5) Ver la palabra más corta\n6) Número de palabras insertadas\n7) Buscar una palabra\n8) Borrar duplicado\n9) Salir");
+                        switch (menu) {
+
+                            case "1":
+                                console.log(palabras[0]);
+                                break;
+                            case "2":
+                                console.log(palabras[palabras.length - 1]);
+                                break;
+                            case "3":
+                                console.log(palabras.join(","));
+                                break;
+                            case "4":
+                                var palabraLarga = palabras[0];
+                                for (const palabra of palabras) {
+                                    if (palabra.length > palabraLarga.length) {
+                                        palabraLarga = palabra;
+                                    }
+                                }
+                                console.log(palabraLarga);
+                                break;
+                            case "5":
+
+                                var palabraCorta = palabras[0];
+                                for (const palabra of palabras) {
+                                    if (palabra.length < palabraCorta.length) {
+                                        palabraCorta = palabra;
+                                    }
+                                }
+                                console.log(palabraCorta);
+                                break;
+                            case "6":
+                                console.log(palabras.length);
+
+                                break;
+                            case "7":
+                                var buscar = prompt("Palabra a buscar");
+                                if (palabras.indexOf(buscar) == -1) {
+                                    console.log("Palabra no encontrada");
+                                } else {
+                                    console.log("Palabra encontrada en la posicion:", palabras.indexOf(buscar));
+                                }
+                                break;
+                            case "8":
+                                var conjunto = new Set(palabras);
+                                console.log(conjunto);
+                                break;
+                            case "9":
+                                salir = true;
+                                break;
+                            default:
+                                break;
+                        }
+                    } while (salir == false);
+
+                    break;
+                case "5":
+
+
+                    break;
+
+                case "0":
+
+                    break;
+                default:
+                    break;
+            }
+        } while (opcion != 0);
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

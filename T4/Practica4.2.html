@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var salir = true;
+        do {
+            var opcion = parseInt(
+                prompt(
+                    "1. Crea un script que pida al usuario su fecha de nacimiento y le diga el día de la semana en que nació y el día de la semana de todos sus cumpleaños hasta este año. \n2. Crea una función que reciba como parámetros: día, mes, año, hora, minutos y segundos y cree una fecha con esos datos \n3. Crea un script que pida al usuario un mes y un año y muestre un calendario de ese mes. \n4. Crea un script que pida al usuario un mes y devuelva todas las personas que cumplan años en ese mes. \n5. Añade el código necesario para validar el código de la granja de la práctica anterior utilizando expresiones regulares. \n6. Crea un script que valide un código postal  \n7. Crea una aplicación web que sirva para validar NIFs indicando si es correcto o no. \n8. Salir"
+                )
+            );
+            switch (opcion) {
+                case 1:
+                    var fechaNacimiento = prompt("Introduce tu fecha de nacimiento:");
+                    var diasSemana = [
+                        "Domingo",
+                        "Lunes",
+                        "Martes",
+                        "Miércoles",
+                        "Jueves",
+                        "Viernes",
+                        "Sábado",
+                    ];
+                    var oFechaNacimiento = new Date(fechaNacimiento);
+                    var diaSemana = oFechaNacimiento.getDay();
+                    console.log("El cumpleaños es " + diasSemana[diaSemana]);
+                    do {
+                        oFechaNacimiento.setFullYear(oFechaNacimiento.getFullYear() + 1);
+                        var oCumpleaños = oFechaNacimiento;
+                        console.log(diasSemana[oCumpleaños.getDay()]);
+                    } while (new Date().getFullYear() > oCumpleaños.getFullYear());
+
+                    break;
+
+                case 2:
+                    function creadorFechas(dia, mes, año, hora, minutos, segundos) {
+                        const diasSemana = [
+                            "Domingo",
+                            "Lunes",
+                            "Martes",
+                            "Miércoles",
+                            "Jueves",
+                            "Viernes",
+                            "Sábado",
+                        ];
+                        const mesesDelAnio = [
+                            "Enero",
+                            "Febrero",
+                            "Marzo",
+                            "Abril",
+                            "Mayo",
+                            "Junio",
+                            "Julio",
+                            "Agosto",
+                            "Septiembre",
+                            "Octubre",
+                            "Noviembre",
+                            "Diciembre",
+                        ];
+                        var oFechaCreada = new Date();
+                        if (
+                            dia != null &&
+                            mes != null &&
+                            año != null &&
+                            hora != null &&
+                            minutos != null &&
+                            segundos != null
+                        ) {
+                            oFechaCreada.setDate(dia);
+                            oFechaCreada.setMonth(mes - 1);
+                            oFechaCreada.setFullYear(año);
+                            oFechaCreada.setHours(hora);
+                            oFechaCreada.setMinutes(minutos);
+                            oFechaCreada.setSeconds(segundos);
+                        } else {
+                            console.log("Introduce bien los valores");
+                        }
+                        alert(
+                            "Hoy es " +
+                            diasSemana[oFechaCreada.getDay()] +
+                            ", " +
+                            oFechaCreada.getDate() +
+                            " de " +
+                            mesesDelAnio[oFechaCreada.getMonth()] +
+                            " de " +
+                            oFechaCreada.getFullYear() +
+                            " y son las " +
+                            oFechaCreada.getHours() +
+                            " horas, " +
+                            oFechaCreada.getMinutes() +
+                            " minutos y " +
+                            oFechaCreada.getSeconds() +
+                            " segundos."
+                        );
+                    }
+                    creadorFechas(16, 11, 2023, 10, 10, 10);
+
+                    break;
+                case 3:
+                    var diasSemana = [
+                        "Domingo",
+                        "Lunes",
+                        "Martes",
+                        "Miércoles",
+                        "Jueves",
+                        "Viernes",
+                        "Sábado",
+                    ];
+                    var AnioFechaCalendario = prompt("Introduce un anio:");
+                    var MesFechaCalendario = prompt("Introduce un mes:") - 1;
+                    var oFechaCalendario = new Date();
+                    var contador = 1;
+                    oFechaCalendario.setFullYear(AnioFechaCalendario);
+                    oFechaCalendario.setMonth(MesFechaCalendario);
+                    oFechaCalendario.setDate(1);
+                    while (oFechaCalendario.getMonth() == MesFechaCalendario) {
+                        console.log(oFechaCalendario.getDate());
+                        console.log(diasSemana[oFechaCalendario.getDay()]);
+                        oFechaCalendario.setDate(oFechaCalendario.getDate() + 1);
+                    }
+                    break;
+                case 4:
+                    function generarFechaNacimientoAleatoria() {
+                        var inicio = new Date("1980-01-01");
+                        var fin = new Date("2023-12-31");
+                        var fechaAleatoria = new Date(inicio + Math.random() * (fin - inicio));
+                        return fechaAleatoria;
+                    }
+
+                    var MesFechaCalendario = prompt("Introduce un mes:") - 1;
+                    var mapaFechasNacimiento = new Map();
+
+                    for (var i = 1; i <= 100; i++) {
+                        var fechaAleatoria = generarFechaNacimientoAleatoria();
+                        mapaFechasNacimiento.set(i, fechaAleatoria);
+                    }
+                    for (let [persona, fecha] of mapaFechasNacimiento) {
+                        if (fecha.getMonth() == MesFechaCalendario) {
+                            console.log(persona + ", " + fecha.toLocaleDateString());
+                        }
+                    }
+
+                    break;
+                case 5:
+                    var codigo = prompt("Introduce el codigo de la granja");
+                    var validarCodigo = /^[aeiouAEIOU]\d{10}[a-zA-Z]$/;
+                    if (validarCodigo.test(codigo)) {
+                        console.log("Codigo correcto");
+                    } else {
+                        console.log("Codigo Incorrecto");
+                    }
+                    break;
+                case 6:
+                    var codigoPostal = prompt("Introduce el codigo postal");
+                    var validarCodigo = /^{[0-4]\d{4}|5}[0-2]\d{3}$/;
+                    if (validarCodigo.test(codigoPostal)) {
+                        console.log("Codigo postal correcto");
+                    } else {
+                        console.log("Codigo postal Incorrecto");
+                    }
+                    break;
+                case 7:
+                    var nif = prompt("Introduce tu NIF");
+                    var validarNif = /^[XYZ\d]\d{7}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+                    if (validarNif.test(nif)) {
+                    } else {
+                        console.log("NIF Incorrecto");
+                    }
+                    break;
+
+                case 8:
+                    salir = true;
+                    break;
+                default:
+                    break;
+            }
+        } while (!salir);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

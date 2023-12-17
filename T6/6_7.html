@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    h1 {
+      color: white;
+      margin: auto;
+      font-size: 64px;
+      background-color: orange;
+    }
+
+    .error {
+      border: 1px solid red;
+      background-color: #ffebe6;
+      color: white;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var tipo = document.getElementById("tipo");
+      var imagen = document.getElementById("imagen");
+      var descripcion = document.getElementById("descripcion");
+      var numSerieInput = document.getElementById("numSerie");
+      var form = document.querySelector("form");
+
+      tipo.addEventListener("change", function () {
+        var selectValue = tipo.value;
+        switch (selectValue) {
+          case "distribucion":
+            imagen.src = "imagenes/obra1.jpg";
+            break;
+          case "oficina":
+            imagen.src = "imagenes/obra2.jpg";
+            break;
+          case "produccion":
+            imagen.src = "imagenes/obra3.jpg";
+            break;
+        }
+      });
+
+      descripcion.addEventListener("click", function (event) {
+        event.preventDefault();
+        descripcion.style.display = "none";
+        var textArea = document.createElement("textarea");
+        textArea.rows = 5;
+        textArea.cols = 30;
+        textArea.placeholder = "Descripción incidencia";
+        form.insertBefore(textArea, descripcion.nextSibling);
+      });
+
+      form.addEventListener("submit", function (event) {
+        // Validar el número de serie al enviar el formulario
+        var numSerie = numSerieInput.value;
+        if (!validarNumeroSerie(numSerie)) {
+          // Mostrar mensaje de error y aplicar estilos
+          alert("El número de serie no cumple con las reglas especificadas.");
+          numSerieInput.classList.add("error");
+          event.preventDefault(); // Evitar el envío del formulario si hay errores
+        }
+      });
+
+      // Event listener para quitar estilos de error al modificar el número de serie
+      numSerieInput.addEventListener("input", function () {
+        numSerieInput.classList.remove("error");
+      });
+
+      function validarNumeroSerie(numeroSerie) {
+        // Expresión regular para validar el número de serie
+        var regex = /^[0-9]{3}[A-Z]{4}(?:[12]|A)$/;
+        // Comprobar si el número de serie coincide con la expresión regular
+        return regex.test(numeroSerie);
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <h1>INFORME INCIDENCIA</h1>
+    <form>
+      <img id="imagen" src="imagenes/obra1.jpg" width="200" height="125" /><br /><br />
+      <label for="incidencia">Tipo de incidencia</label>
+      <select id="tipo">
+        <option value="distribucion">Distribución</option>
+        <option value="oficina">Oficina</option>
+        <option value="produccion">Producción</option>
+      </select><br /><br />
+      <label for="numSerie">Numero de serie</label>
+      <input type="text" id="numSerie" name="numSerie" /><br /><br />
+      <button id="descripcion">Mostrar Descripción</button><br /><br />
+      <input id="enviar" name="enviar" type="submit" value="Enviar datos" />
+    </form>
+  </div>
+</body>
+
+</html>

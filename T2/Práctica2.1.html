@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        do {
+            opcion = prompt("Elije el ejercicio, 0 para salir", 1)
+            switch (opcion) {
+                case "1":
+                    do {
+                        var num1 = parseInt(prompt("Elije un numero"));
+                        var num2 = parseInt(prompt("Elije otro numero"));
+                    } while (num1 > num2 || isNaN(num1) || isNaN(num2))
+
+                    for (var i = 0; i < 10; i++) {
+                        var num3 = parseInt(Math.random() * (num2 - num1 + 1) + num1);
+                        console.log(num3);
+                    }
+
+                    break;
+                case "2":
+                    var num1 = prompt("Introdzca un número");
+                    if (!isNaN(num1)) {
+
+                        if (num1 % 2 == 0) {
+                            console.log("Es un número par");
+                        } else {
+                            console.log("No es un número par");
+                        }
+                        var esPrimo = true;
+                        for (let i = 2; i <= num1 / 2; i++) {
+                            if (num1 % i == 0 && num != 1) {
+                                esPrimo = false;
+                            }
+                        }
+                        if (esPrimo) {
+                            console.log("Es primo");
+                        } else {
+                            console.log("No es primo");
+                        }
+                    } else {
+                        alert("No se ha introducido un numero");
+                    }
+                    break;
+                case "3":
+                    do {
+                        var resultado = 0;
+                        var num1 = parseInt(prompt("Elije un numero"));
+                        var num2 = parseInt(prompt("Elije otro numero"));
+                    } while (isNaN(num1) || isNaN(num2))
+                    do {
+                        var operacion = prompt("Elije opracion +,-,/,*");
+                    } while (operacion != "+" && operacion != "-" && operacion != "/" && operacion != "*")
+
+                    switch (operacion) {
+                        case "+":
+                            resultado = num1 + num2;
+                            break;
+                        case "-":
+                            resultado = num1 - num2;
+                            break;
+                        case "/":
+                            resultado = num1 / num2;
+                            break;
+                        case "*":
+                            resultado = num1 * num2;
+                            break;
+
+                        default:
+                            break;
+                    }
+                    console.log(resultado);
+
+                    break;
+                case "4":
+                    do {
+                        var num1 = parseInt(prompt("Elije un numero"));
+                    } while (isNaN(num1) && num1 > 0 && num1 < 101)
+                    for (var i = num1; i <= 100; i++) {
+                        if (i % num1 == 0) {
+                            console.log(i);
+                        }
+                    }
+
+                    break;
+                case "5":
+
+                    var total = 0;
+                    var contador = 0;
+                    var maximo = Number.MIN_VALUE;
+                    var minimo = Number.MAX_VALUE;
+                    do {
+
+                        do {
+                            var num1 = parseInt(prompt("Escribe un numero, 0 para salir"));
+                        } while (isNaN(num1))
+                        if (num1 != 0) {
+                            if (num1 > maximo) {
+                                maximo = num1;
+                            } else if (num1 < minimo) {
+                                minimo = num1;
+                            }
+                            contador++;
+                            total = num1 + total;
+                        }
+                    } while (num1 != 0)
+                    console.log("media ", total / contador);
+                    console.log("max ", maximo);
+                    console.log("min ", minimo);
+
+                    break;
+                case "6":
+                    var password = "paso";
+                    var contador = 0;
+                    while (contador < 3) {
+                        var texto = prompt("Escribe la contraseña,tienes 3 intentos");
+                        if (texto == password) {
+                            console.log("Enhorabuena");
+                            contador = 4;
+                        } else {
+                            contador++;
+                        }
+                    }
+                    break;
+
+                case "7":
+                    var contador_cifras = 1;
+                    do {
+                        var num1 = parseInt(prompt("Elije un numero entero positivo"));
+                    } while (isNaN(num1) || num1 < 0)
+                    while (num1 / 10 >= 1) {
+                        num1 = num1 / 10;
+                        contador_cifras++;
+                    }
+                    console.log(contador_cifras);
+
+                    break;
+                case "8":
+
+                    do {
+                        var num1 = parseInt(prompt("Elije un numero"));
+                        var num2 = parseInt(prompt("Elije otro numero"));
+                    } while (num1 > num2 || isNaN(num1) || isNaN(num2))
+
+                    for (var num3 = num1 + 1; num3 < num2; num3++) {
+                        if (num3 % 2 == 0) {
+                            console.log(num3);
+                        }
+                    }
+
+                    break;
+                case "9":
+                    do {
+                        var num1 = parseInt(prompt("Elije un numero"));
+                        var num2 = parseInt(prompt("Elije otro numero"));
+                    } while (num1 > num2 || isNaN(num1) || isNaN(num2))
+
+                    var pares = 0;
+                    var inpares = 0;
+                    for (var num3 = num1 + 1; num3 < num2; num3++) {
+                        if (num3 % 2 == 0) {
+                            pares = pares + num3;
+                        } else {
+                            inpares = inpares + num3;
+                        }
+                    }
+                    console.log("pares: ", pares);
+                    console.log("inpares: ", inpares);
+
+
+                    break;
+                case "10":
+                    do {
+                        var JuegoTerminado = false;
+                        var num_adivinar = parseInt(Math.random() * (100 - 1 + 1) + 1);
+                        var contador = 0;
+                        var seguirjugando = true;
+                        var jugar = true;
+
+                        do {
+                            var num1 = prompt("Elije un numero,tienes 5 intentos");
+                            while (num1 < 0 || num1 > 100 || isNaN(num1)) {
+                                alert("Error de entrada")
+                                var num1 = prompt("Elije un numero");
+                            }
+
+                            if (num1 != null) {
+                                if (num1 == num_adivinar) {
+                                    alert("Acertaste!!")
+                                    JuegoTerminado = true;
+                                    seguirjugando = false;
+                                } else
+
+                                    if (contador < 4) {
+                                        if (num1 > num_adivinar) {
+                                            console.log("El numero es menor");
+                                        } else {
+                                            console.log("El numero es mayor");
+                                        }
+                                    }
+                                contador++
+                            } else {
+                                jugar = false;
+                                seguirjugando = false;
+                            }
+
+                        } while (contador < 5 && seguirjugando)
+                        if (contador == 5) {
+                            console.log("Has perdido, el numero era: ", num_adivinar)
+                        }
+                        if (jugar) {
+                            jugar = confirm("¿Quieres jugar de nuevo?");
+                        }
+                        if (!jugar) {
+                            alert("Juego cancelado");
+                        }
+                        document.write("Juego Terminado ", JuegoTerminado);
+                        document.write("Número de intentos ", contador);
+                        document.write("Número acertado ", num1 == num_adivinar);
+                    } while (jugar);
+
+
+                    break;
+                case "11":
+                    var num1 = prompt("Elije un numero, entero positivo");
+                    while (num1 < 0 || isNaN(num1)) {
+                        alert("Error de entrada")
+                        var num1 = prompt("Elije un numero, entero positivo");
+                    }
+                    document.write("Triángulo 1");
+                    for (let i = 0; i < num1; i++) {
+                        document.write("<br/>");
+                        for (let a = 0; a < i + 1; a++) {
+                            document.write("*");
+                        }
+                    }
+                    document.write("<br/>");
+                    document.write("Triángulo 2");
+                    for (let i = num1; i > 0; i--) {
+                        document.write("<br/>");
+                        for (let a = i; a > 0; a--) {
+                            document.write("*");
+                        }
+                    }
+                    document.write("<br/>");
+                    document.write("Triángulo 3");
+                    for (let i = 0; i < num1; i++) {
+                        document.write("<br/>");
+                        for (let a = num1 - i; a > 0; a--) {
+                            document.write("&nbsp");
+                        }
+                        for (let a = 0; a < i + 1; a++) {
+                            document.write("* ");
+                        }
+                    }
+                    document.write("<br/>");
+                    document.write("Triángulo 4");
+                    for (let i = num1; i > 0; i--) {
+                        document.write("<br/>");
+                        for (let a = num1 - i; a > 0; a--) {
+                            document.write("&nbsp");
+                        }
+                        for (let a = i; a > 0; a--) {
+                            document.write("* ");
+                        }
+                    }
+                    break;
+                case "12":
+                    var salir = false;
+                    var suma = 0;
+                    var cadena = "";
+                    do {
+                        var num1 = prompt("Introduce un numero,cancelar para salir");
+                        if (!isNaN(num1) && num1 != null) {
+                            suma += parseInt(num1);
+                        }
+                        if (isNaN(num1)) {
+                            cadena += num1;
+                        }
+                    } while (num1 != null);
+                    console.log(suma);
+                    console.log(cadena);
+
+                    break;
+                case "13":
+                    var b = 0;
+                    document.write("<table>");
+                    for (let i = 0; i < 1000; i++) {
+                        document.write("<tr>");
+                        for (let a = 0; a < 10; a++) {
+                            b++;
+                            document.write("<td>");
+                            document.write(b);
+                            document.write("</td>");
+                            document.write("<td>");
+                            document.write("&#" + b);
+                            document.write("</td>");
+                        }
+                        document.write("<tr>");
+                    }
+                    document.write("</table>");
+
+                    break;
+                case "14":
+                    var num1 = prompt("Introduce un numero");
+
+
+                    for (let index = 0; index < num1; index++) {
+                        var color1 = parseInt(Math.random() * 256);
+                        var color2 = parseInt(Math.random() * 256);
+                        var color3 = parseInt(Math.random() * 256);
+                        var top = (Math.random() * 100);
+                        var left = (Math.random() * 100);
+                        document.write("<div style='width: 50px; height: 50px; background-color:rgb(" + color1 + "," + color2 + "," + color3 + "); top:" + top + "%; left:" + left + "%; position:absolute;'></div>");
+                    }
+
+                    break;
+                case "0":
+
+                    break;
+                default:
+                    break;
+            }
+        } while (opcion != 0);
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

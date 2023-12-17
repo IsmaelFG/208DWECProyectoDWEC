@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        header {
+            background: black;
+            color: white;
+            text-align: center;
+            width: 100%;
+            height: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .encabezado {
+            background-color: gray;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+        }
+
+        .encabezado a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin-left: 600px;
+        }
+
+        .opciones {
+            position: absolute;
+            background: white;
+            top: 15%;
+        }
+
+        .TCP {
+            background-color: #906b6b;
+            display: none;
+            height: 100%;
+            width: 33%;
+            position: absolute;
+            top: 14.5%;
+            right: 0%;
+        }
+
+        .OSI {
+            background-color: #906b6b;
+            display: none;
+            height: 100%;
+            width: 33%;
+            position: absolute;
+            top: 14.5%;
+            right: 33%;
+            text-align: center;
+        }
+
+        .OSI a:nth-child(1) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #41af7e;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 12%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .OSI a:nth-child(2) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #41af7e;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 12%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .OSI a:nth-child(3) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #41af7e;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 12%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .OSI a:nth-child(4) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #3688af;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 12%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .OSI a:nth-child(5) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #af7333;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 12%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .OSI a:nth-child(6) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #af30a9;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 12%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .OSI a:nth-child(7) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #af30a9;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 12%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .TCP a:nth-child(1) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #41af7e;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 27%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .TCP a:nth-child(2) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #3688af;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 27%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .TCP a:nth-child(3) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #af7333;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 27%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .TCP a:nth-child(4) {
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 50%;
+            background-color: #af30a9;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            color: black;
+            margin-left: 27%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: black;
+            opacity: 0;
+            transition: opacity 0.5s ease, height 0.5s ease;
+            pointer-events: none;
+            /* Para que no sea interactivo mientras está oculto */
+            z-index: 9999;
+            /* Asegura que esté sobre todo lo demás */
+        }
+
+        /* Clase para mostrar el overlay */
+        .overlay.active {
+            opacity: 1;
+            /* Opacidad del velo */
+            height: 100%;
+            /* Altura para cubrir toda la pantalla */
+            pointer-events: auto;
+            /* Hace que sea interactivo */
+            transition: opacity 0.5s ease, height 0.5s ease;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const boton1 = document.querySelector(".opciones button:first-of-type");
+            const boton2 = document.querySelector("button:last-of-type");
+            const tabla1 = document.querySelector(".OSI");
+            const tabla2 = document.querySelector(".TCP");
+            const primerCheckbox = document.querySelector('.opciones input[type="checkbox"][name="opcion"][value="OSI"]');
+            const segundoCheckbox = document.querySelector('.opciones input[type="checkbox"][name="opcion"][value="TCP"]');
+            const overlay = document.querySelector('.overlay');
+
+            primerCheckbox.addEventListener('change', function () {
+                if (this.checked) {
+                    // Si el checkbox está desmarcado, ocultar los elementos OSI
+                    tabla1.style.display = 'block';
+                } else {
+
+                    // Si el checkbox está marcado, mostrar los elementos OSI
+                    tabla1.style.display = 'none';
+                }
+            });
+            segundoCheckbox.addEventListener('change', function () {
+                if (this.checked) {
+                    // Si el checkbox está desmarcado, ocultar los elementos TCP
+                    tabla2.style.display = 'block';
+                } else {
+                    // Si el checkbox está marcado, mostrar los elementos TCP
+                    tabla2.style.display = 'none';
+                }
+            });
+
+            boton1.addEventListener('click', function () {
+                tabla1.style.display = 'none';
+                tabla2.style.display = 'none';
+                primerCheckbox.checked = false;
+                segundoCheckbox.checked = false;
+            });
+
+            boton2.addEventListener('click', function () {
+                overlay.classList.add('active');
+                overlay.addEventListener('click', function () {
+                    overlay.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div>
+        <header>
+            <h1>Niveles OSI y TCP/IP</h1>
+        </header>
+        <div class="encabezado">
+            <a>Modelo OSI</a>
+            <a>Modelo TCP/IP</a>
+        </div>
+        <div class="opciones">
+            <label><input type="checkbox" name="opcion" value="OSI"> OSI</label><br>
+            <label><input type="checkbox" name="opcion" value="TCP"> TCP/IP</label><br>
+            <button type="button">Ocultar Ambas</button>
+            <button type="button">Ocultar Todo</button>
+        </div>
+        <div class="OSI">
+            <a>Aplicación</a>
+            <a>Presentación</a>
+            <a>Sesión</a>
+            <a>Transporte</a>
+            <a>Red</a>
+            <a>Enlace a datos</a>
+            <a>Física</a>
+        </div>
+        <div class="TCP">
+            <a>Aplicación</a>
+            <a>Transporte</a>
+            <a>Internet</a>
+            <a>Interfaz de red</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: teal;
+            font-weight: bold;
+            font-size: 64px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        #input_tarea {
+            position: relative;
+            height: 50px;
+            width: 1000px;
+            font-size: 24px;
+            outline: 0.1px solid red;
+            border-radius: 10px;
+        }
+
+        #agregar {
+            position: relative;
+            background-color: brown;
+            height: 50px;
+            width: 100px;
+            font-size: 24px;
+            color: white;
+            border-radius: 10px;
+        }
+
+        ul {
+            padding: 0;
+            width: 1000px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            color: teal;
+        }
+
+        #btn_borrar {
+            background-color: brown;
+            width: 50px;
+            height: 20px;
+            margin-left: 10px;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var lista = document.getElementById("lista");
+            var input_tarea = document.getElementById("input_tarea");
+            var agregar = document.getElementById("agregar");
+
+            agregar.addEventListener("click", function () {
+                var li = document.createElement("li");
+                var textoLista = input_tarea.value;
+                var tarea = document.createTextNode(textoLista);
+                var btn_borrar = document.createElement("button");
+                btn_borrar.setAttribute("id", "btn_borrar");
+                btn_borrar.innerText = "quitar";
+                btn_borrar.addEventListener("click", function () {
+                    lista.removeChild(li);
+                });
+
+                lista.appendChild(li);
+                li.appendChild(tarea);
+                li.appendChild(btn_borrar);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Lista de tareas</h1>
+    <form action="">
+        <input type="text" id="input_tarea" placeholder="Nueva Tarea">
+        <input type="button" class="boton" id="agregar" value="+">
+    </form>
+    <ul id="lista"></ul>
+</body>
+
+</html>
