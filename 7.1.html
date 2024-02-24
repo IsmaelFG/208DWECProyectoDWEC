@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        #text {
+            display: none;
+            position: fixed;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ddd;
+        }
+
+        #close {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #3c99d6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="fileName">Nombre del archivo:</label>
+    <input type="text" id="fileName" placeholder="Escribe el nombre del archivo">
+    <button onclick="cargarTexto()">Cargar texto</button>
+
+    <div id="text">
+        <div id="textContent"></div>
+        <button id="close" onclick="cerrarContenedor()">Cerrar</button>
+    </div>
+
+    <script>
+        function cargarTexto() {
+            var fileName = document.getElementById("fileName").value;
+            var text = document.getElementById("text");
+            var textContent = document.getElementById("textContent");
+
+            fetch(`archivos/${fileName}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Archivo no encontrado");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Limpiamos el contenido anterior
+                    while (textContent.firstChild) {
+                        textContent.removeChild(textContent.firstChild);
+                    }
+                    // Creamos un nodo de texto y lo agregamos al contenedor
+                    var textNode = document.createTextNode(data);
+                    textContent.appendChild(textNode);
+                    text.style.display = "block";
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        }
+
+        function cerrarContenedor() {
+            document.getElementById("text").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
