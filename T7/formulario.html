@@ -114,9 +114,19 @@
         }
 
         function validarNIF() {
-            nifInput.style.border = '2px solid green';
-            return true;
+            var regExp = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+            if (regExp.test(nifInput.value)) {
+                nifInput.style.border = '2px solid green';
+                errorNIF.textContent = '';
+                return true;
+            } else {
+                nifInput.style.border = '2px solid red';
+                errorNIF.textContent = 'El nif no es valido';
+                return false;
+            }
         }
+
+
 
         nombreInput.addEventListener('input', validarNombre);
         apellidosInput.addEventListener('input', validarApellidos);
